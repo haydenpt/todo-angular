@@ -1,26 +1,33 @@
 <h1>My Todos</h1>
+<div class="alert alert-success" *ngIf="deleteMessage">{{ deleteMessage }}</div>
 <div class="container">
-<table class="table">
-  <caption>
-    My Todo List
-  </caption>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Description</th>
-      <th>Target Date</th>
-      <th>Done</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Loop through todo items for each row-->
-    <tr *ngFor="let todo of todoList">
-      <td>{{ todo.id }}</td>
-      <td>{{ todo.description }}</td>
-      <td>{{ todo.targetDate | date }}</td>
-      <td>{{ todo.done ? "Y" : "N" }}</td>
-    </tr>
-    <!-- End loop -->
-  </tbody>
-</table>
+  <table class="table">
+    <caption>
+      My Todo List
+    </caption>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Target Date</th>
+        <th>Done</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Loop through todo items for each row-->
+      <tr *ngFor="let todo of todoList">
+        <td>{{ todo.id }}</td>
+        <td>{{ todo.description }}</td>
+        <td>{{ todo.targetDate | date }}</td>
+        <td>{{ todo.done ? "Y" : "N" }}</td>
+        <td>
+          <button (click)="deleteItem('admin', todo.id)" class="btn btn-danger">
+            Delete
+          </button>
+        </td>
+      </tr>
+      <!-- End loop -->
+    </tbody>
+  </table>
 </div>
